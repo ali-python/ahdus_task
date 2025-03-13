@@ -54,7 +54,7 @@ python manage.py test
 ### Authentication
 - **Login:** `POST /auth/login/`
 - **Register:** `POST /auth/register/`
-- **Logout:** `POST /auth/logout/`
+- **Logout:** `POST /logout/`
 
 ### Project Management
 - **Create Project:** `POST /api/project/`
@@ -119,4 +119,3 @@ This application provides a project management system where users can register, 
 
 ## Notes
 Ensure that users authenticate before accessing protected endpoints. The owner manages project assignments, and members can interact with the system based on their roles.
-
