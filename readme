@@ -79,3 +79,44 @@ def setUp(self):
 4. Push to the branch (`git push origin feature-branch`).
 5. Create a pull request.
 
+#######################################################################################################
+##############################################Application Use###########################################
+########################################################################################################
+
+## Overview
+This application provides a project management system where users can register, log in, and perform different actions based on their assigned roles. The owner can create projects, add members, and assign roles to control access to various endpoints.
+
+## Features
+- User Registration & Login
+- Project Creation by Owners
+- Role-Based Access Control
+- Members assigned to projects with specific roles
+- Role-specific API endpoints
+
+## How to Use the Application
+1. **Register a User**: Create an account by providing necessary details.
+2. **Login**: Authenticate using credentials to receive an access token.
+3. **Create a Project**: The project owner can create projects.
+4. **Add Members**: The owner assigns users to the project with specific roles.
+5. **Role-Based Access**: Users can access endpoints based on their assigned roles.
+
+## API Endpoints
+- **Authentication**
+  - `POST auth/register/` - Register a new user
+  - `POST auth/login/` - Login and receive an authentication token
+  - `POST /logout/` - Logout and blacklist the token
+
+- **Projects**
+  - `POST api/projects/` - Create a project (Owner only)
+  - `GET api/projects/` - List all projects (Role-based access)
+
+- **Members**
+  - `POST /projects/{project_id}/add-member/` - Add a member to a project (Owner only)
+  - `GET /projects/{project_id}/members/` - List project members
+
+- **Role-Based Access**
+  - Users can access different endpoints based on their roles.
+
+## Notes
+Ensure that users authenticate before accessing protected endpoints. The owner manages project assignments, and members can interact with the system based on their roles.
+
