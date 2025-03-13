@@ -1,4 +1,4 @@
-# Project Name
+AHDUS Task
 
 ## Overview
 This project is a Django-based web application that manages projects and project members. It includes authentication, API endpoints, and unit tests to ensure proper functionality.
