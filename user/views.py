@@ -10,6 +10,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 User = get_user_model()
 
+import logging
+logger = logging.getLogger('user')
+
 class RegisterView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
@@ -28,10 +31,10 @@ class LoginView(APIView):
         email = request.data.get("email")
         password = request.data.get("password")
         
-        print(f"Logging in user: {email}")
+        logger.info(f"Logging in user: {email}")
         
         user = authenticate(request, username=email, password=password)
-        print(f"Authenticated user: {user}")
+        logger.info(f"Authenticated user: {user}")
 
         if user:
             refresh = RefreshToken.for_user(user)
@@ -53,9 +56,8 @@ class LogoutView(APIView):
             return Response({"error": "Refresh token is required"}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
-            token = RefreshToken(refresh_token)  # Create RefreshToken instance
+            token = RefreshToken(refresh_token)
             
-            # Only blacklist token if blacklisting is enabled
             if "rest_framework_simplejwt.token_blacklist" in settings.INSTALLED_APPS:
                 token.blacklist()  
 
